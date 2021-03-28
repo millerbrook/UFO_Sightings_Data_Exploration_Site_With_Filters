@@ -23,28 +23,22 @@ function runEnter() {
 
     //Get the value property of the input element
     var dateValue = dateInput.property("value");
-    return dateValue;
-}
 
-dateFilter = [];
-try {
+    dateFilter = [];
     tableData.forEach(function(item) {
         console.log(dateValue);
-        if (item.datetime === dateValue)
+        if (item.datetime === dateValue){
             dateFilter.push(item);
-        })
-    console.log(dateFilter)
-    var printTable = d3.select("#ufo-table")
-
-    dateFilter.forEach( function(dateObject) {
-        var row = printTable.append("tr");
-        Object.entries(dateObject).forEach(([key, value]) => {
-            var cell = row.append("td");
-            console.log(value);
-            cell.text(value);
-        });
+        };
     });
-}
-catch {
-    console.log('no data entered');
-};
+        console.log(dateFilter)
+        var printTable = d3.select("#ufo-table")
+        dateFilter.forEach( function(dateObject) {
+            var row = printTable.append("tr");
+            Object.entries(dateObject).forEach(([key, value]) => {
+                var cell = row.append("td");
+                console.log(value);
+                cell.text(value);
+            });
+        });
+    };
