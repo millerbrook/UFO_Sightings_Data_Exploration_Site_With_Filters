@@ -4,8 +4,8 @@ var tableData = data;
 // YOUR CODE HERE!
 //Select date field and button
 
-var button = d3.select('#filter-btn');
-var form = d3.select('#date-form')
+var button = d3.select("#filter-btn");
+var form = d3.select("#date-form");
 //Test with hard coded date;
 //date = "1/10/2010";
 
@@ -15,30 +15,68 @@ form.on("submit", runEnter);
 
 //Create the function to run for both events
 function runEnter() {
-    //Prevent the page from refreshing
-    d3.event.preventDefault();
+  //Prevent the page from refreshing
+  d3.event.preventDefault();
 
-    //Select the input element and get the raw HTML node
-    var dateInput = d3.select("#datetime");
+  //Select the input element and get the raw HTML node
+  var dateField = d3.select("#datetime");
+  var cityField = d3.select("#cityInput");
 
-    //Get the value property of the input element
-    var dateValue = dateInput.property("value");
+  //Get the value property of the input element
+  var dateValue = dateField.property("value");
+  var cityValue = cityField.property("value");
+  //Filter array for final table
+  //Set to full data set to start
+  tableFiltered = data;
 
-    dateFilter = [];
-    tableData.forEach(function(item) {
+  //If dateValue.length > 0, filter for date
+  dateFilter = [];
+  if (dateValue.length > 0) {
+    tableData.forEach(function (item) {
         console.log(dateValue);
-        if (item.datetime === dateValue){
-            dateFilter.push(item);
-        };
+        if (item.datetime === dateValue) {
+        dateFilter.push(item);
+        }
     });
-        console.log(dateFilter)
-        var printTable = d3.select("#ufo-table")
-        dateFilter.forEach( function(dateObject) {
-            var row = printTable.append("tr");
-            Object.entries(dateObject).forEach(([key, value]) => {
-                var cell = row.append("td");
-                console.log(value);
-                cell.text(value);
-            });
-        });
+  };
+  console.log(dateFilter);
+
+  //Check if filter grabbed any values. if so, make tableFiltered the set of those values
+  if (dateFilter.length > 0) {
+    tableFiltered = dateFilter;
+  };
+
+  //establish array to store filtered by city data
+  cityFilter = [];
+
+  //If cityValue.length > 0, filter for city
+  if (cityValue.length > 0) {
+  tableData.forEach(function (item) {
+    console.log(dateValue);
+    if (item.city === cityValue) {
+      cityFilter.push(item);
+    }
+    });
     };
+  console.log(dateFilter);
+  console.log(cityFilter);
+  console.log(tableFiltered);
+//Possibility: none of the filters narrowed down tableFiltered, so nothing should be output
+if (tableFiltered === data) {
+    //PRINT "No Records Found" to "#no-output" div (tucked below... or put something in an make it hidden, then change to visible?)
+}
+else {
+  //Print final filtered table
+  var printTable = d3.select("#ufo-table");
+  tableFiltered.forEach(function (tableObject) {
+    //Make a row for each object in table
+    var row = printTable.append("tr");
+    //Print values within each object
+    Object.entries(tableObject).forEach(([key, value]) => {
+      var cell = row.append("td");
+      console.log(value);
+      cell.text(value);
+    });
+  });
+};
+};
