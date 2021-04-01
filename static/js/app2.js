@@ -71,19 +71,33 @@ function runEnter() {
     });
     tableFiltered = cityFilter;  
   };
-  
-    //establish array to store filtered by state data
-    let stateFilter = [];
 
-    //If cityValue.length > 0, filter for city
-    if (stateValue.length > 0) {
-    tableFiltered.forEach(function (item) {
-      //console.log(cityValue);
-      if (item.state === stateValue) {
-        stateFilter.push(item);
+     //establish array to store filtered by state data
+     let stateFilter = [];
+
+     //If state field has a value, filter for state
+     if (stateValue.length > 0) {
+     tableFiltered.forEach(function (item) {
+       //console.log(stateValue);
+       if (item.state === stateValue) {
+         stateFilter.push(item);
+       }
+       });
+       tableFiltered = stateFilter;  
+     };
+     
+      //establish array to store filtered by state data
+    let countryFilter = [];
+
+    //If state field has a value, filter for state
+    if (countryValue.length > 0) {
+      tableFiltered.forEach(function (item) {
+      //console.log(stateValue);
+      if (item.country === countryValue) {
+        countryFilter.push(item);
       }
       });
-      tableFiltered = stateFilter;  
+      tableFiltered = countryFilter;  
     };
     
     //console.log(dateFilter);
