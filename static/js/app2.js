@@ -86,10 +86,10 @@ function runEnter() {
        tableFiltered = stateFilter;  
      };
      
-      //establish array to store filtered by state data
+    //establish array to store filtered by country data
     let countryFilter = [];
 
-    //If state field has a value, filter for state
+    //If state field has a value, filter for country
     if (countryValue.length > 0) {
       tableFiltered.forEach(function (item) {
       //console.log(stateValue);
@@ -100,6 +100,33 @@ function runEnter() {
       tableFiltered = countryFilter;  
     };
     
+    //establish array to store filtered by shape data
+    let shapeFilter = [];
+
+    //If state field has a value, filter for shape
+    if (shapeValue.length > 0) {
+      tableFiltered.forEach(function (item) {
+      //console.log(shapeValue);
+      if (item.shape === shapeValue) {
+        shapeFilter.push(item);
+      }
+      });
+      tableFiltered = shapeFilter;  
+    };
+
+    //establish array to store filtered by duration data
+    let durationFilter = [];
+
+    //If state field has a value, filter for duration
+    if (durationValue.length > 0) {
+      tableFiltered.forEach(function (item) {
+      //console.log(stateValue);
+      if (item.durationMinutes === durationValue) {
+        durationFilter.push(item);
+      }
+      });
+      tableFiltered = durationFilter;  
+    };
     //console.log(dateFilter);
   //console.log(cityFilter);
   //console.log(tableFiltered);
