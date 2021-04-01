@@ -32,7 +32,7 @@ function runEnter() {
   var dateValue = dateField.property("value");
   var cityValue = cityField.property("value");
   var stateValue = stateField.property("value");
-  var countryValue = countryyField.property("value");
+  var countryValue = countryField.property("value");
   var shapeValue = shapeField.property("value");
   var durationValue = durationField.property("value");
   console.log("Date Value is: ", dateValue);
@@ -42,7 +42,7 @@ function runEnter() {
   tableFiltered = data;
 
   //If dateValue.length > 0, filter for date
-  dateFilter = [];
+  let dateFilter = [];
   if (dateValue.length > 0) {
     tableData.forEach(function (item) {
         //console.log(dateValue);
@@ -59,7 +59,7 @@ function runEnter() {
   };
 
   //establish array to store filtered by city data
-  cityFilter = [];
+  let cityFilter = [];
 
   //If cityValue.length > 0, filter for city
   if (cityValue.length > 0) {
@@ -72,6 +72,20 @@ function runEnter() {
     tableFiltered = cityFilter;  
   };
   
+    //establish array to store filtered by state data
+    let stateFilter = [];
+
+    //If cityValue.length > 0, filter for city
+    if (stateValue.length > 0) {
+    tableFiltered.forEach(function (item) {
+      //console.log(cityValue);
+      if (item.state === stateValue) {
+        stateFilter.push(item);
+      }
+      });
+      tableFiltered = stateFilter;  
+    };
+    
     //console.log(dateFilter);
   //console.log(cityFilter);
   //console.log(tableFiltered);
