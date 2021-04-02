@@ -13,6 +13,24 @@ var form = d3.select("#date-form");
 button.on("click", runEnter);
 form.on("submit", runEnter);
 
+
+function buildHTMLTable(incomingData) {
+  //remove leftover rows
+  var oldRows = d3.select("#ufo-table").selectAll("tr");
+  oldRows.remove();
+  //Print table
+  var printTable = d3.select("#ufo-table");
+  incomingData.forEach(function (tableObject) {
+    //Make a row for each object in table
+    var row = printTable.append("tr");
+    //Print values within each object
+    Object.entries(tableObject).forEach(([key, value]) => {
+      var cell = row.append("td");
+      console.log(value);
+      cell.text(value);
+    });
+  });
+}
 //Create the function to run for both events...
 //function wraps everything that follows
 function runEnter() {
@@ -118,7 +136,7 @@ function runEnter() {
     let durationFilter = [];
 
     //If state field has a value, filter for duration
-    if (durationValue.length > 0) {
+    if (durationValue) {
       tableFiltered.forEach(function (item) {
       //console.log(stateValue);
       if (item.durationMinutes === durationValue) {
@@ -135,18 +153,8 @@ if (tableFiltered === data) {
     //PRINT "No Records Found" to "#no-output" div (tucked below... or put something in an make it hidden, then change to visible?)
 }
 else {
-  //Print final filtered table
-  var printTable = d3.select("#ufo-table");
-  tableFiltered.forEach(function (tableObject) {
-    //Make a row for each object in table
-    var row = printTable.append("tr");
-    //Print values within each object
-    Object.entries(tableObject).forEach(([key, value]) => {
-      var cell = row.append("td");
-      console.log(value);
-      cell.text(value);
-    });
-  });
+  buildHTMLTable(tableFiltered);
 };
 };
-// need to delete old table if a new search is conducted
+
+buildHTMLTable(tableData);
