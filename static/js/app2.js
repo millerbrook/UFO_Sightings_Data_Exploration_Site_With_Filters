@@ -16,10 +16,10 @@ form.on("submit", runEnter);
 
 function buildHTMLTable(incomingData) {
   //remove leftover rows
-  var oldRows = d3.select("#ufo-table").selectAll("tr");
+  var oldRows = d3.select("tbody").selectAll("tr");
   oldRows.remove();
   //Print table
-  var printTable = d3.select("#ufo-table");
+  var printTable = d3.select("tbody");
   incomingData.forEach(function (tableObject) {
     //Make a row for each object in table
     var row = printTable.append("tr");
