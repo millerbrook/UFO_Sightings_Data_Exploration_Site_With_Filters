@@ -4,6 +4,9 @@
 ## Overview
 This project creates a styled website with an interactive table based on a dataset of reported UFO sightings. Uses javascript (and d3), html, and css.
 
+## Explore the project here  
+https://millerbrook.github.io/UFO_Sightings_Data_Exploration_Site_With_Filters/  
+
 ## Data
 Stored as a javascript array: [UFO Sightings Data](static/js/data.js).
 
