@@ -1,4 +1,4 @@
-# Data Exploration Site with Filters
+# UFO Sightings: Data Exploration Site with Filters
 
 
 ## Overview
@@ -11,6 +11,8 @@ Stored as a javascript array: [UFO Sightings Data](static/js/data.js).
 
 ### Step 1
 Create an html page with ids and classes organized to visualize the data and listen for filtering events.
+
+![UFO HTML/CSS Styling](static/images/html-css.png)
 
 ### Step 2
 Build a table into the html file using D3:
